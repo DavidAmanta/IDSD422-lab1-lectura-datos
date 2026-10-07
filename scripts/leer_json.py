@@ -7,3 +7,16 @@
 # TODO 3: convierte la lista de diccionarios en un DataFrame
 #         (recuerda del cap. 2: el JSON no llega como tabla directa)
 # TODO 4: imprime las dimensiones y las primeras filas
+import json
+import pandas as pd
+
+with open("data/ventas.json", encoding="utf-8") as f:
+  datos = json.load(f)
+
+ventas = pd.json_normalize(datos)
+print(ventas.head())
+#Imprimir las dimensiones
+print("Dimensiones: " , ventas.shape)
+#Imprimir tipos de columna
+print("\n Tipos por columna: ")
+print(ventas.dtypes)
